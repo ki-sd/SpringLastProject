@@ -23,7 +23,7 @@ public interface FoodMapper {
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM food")
 	public int foodTotalPage();
 	
-	@Select("SELECT no,poster,name,address,time,price,score,theme,content,parking "
+	@Select("SELECT no,poster,name,phone,type,address,time,price,score,theme,content,parking "
 			+ "FROM food "
 			+ "WHERE no=#{no}")
 	public FoodVO foodDetailData(int no);

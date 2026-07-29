@@ -14,14 +14,14 @@ p{
 	text-overflow: ellipsis;
 }
 </style>
-	<div class="container" style="margin-top: 50px">
+<div class="container" style="margin-top: 50px">
 		<div class="row">
 			<c:forEach var="vo" items="${list }">
 			<div class="col-sm-3">
 				<div class="thumbnail">
-					<a href="../food/detail_before.do?no=${vo.no }" style="text-decoration: none;color: black">
-						<img src="${vo.poster }" title="${vo.address }" style="width: 250px;height: 130px;object-fit: cover">
-						<p>${vo.name }</p>
+					<a href="../goods/detail_before.do?no=${vo.no }" style="text-decoration: none;color: black">
+						<img src="${vo.goods_poster }" title="${vo.goods_price }" style="width: 250px;height: 130px;object-fit: cover">
+						<p>${vo.goods_name }</p>
 					</a>
 				</div>
 			</div>
@@ -30,27 +30,27 @@ p{
 		<div class="row text-center" style="margin-top: 10px">
 			<ul class="pagination">
 				<c:if test="${startPage>1 }">
-				<li><a href="../main/main.do?page=${startPage-1 }">&laquo;</a></li>
+				<li><a href="../goods/list.do?page=${startPage-1 }">&laquo;</a></li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-				<li ${i==curpage?'class="active"':'' }><a href="../main/main.do?page=${i }">${i }</a></li>
+				<li ${i==curpage?'class="active"':'' }><a href="../goods/list.do?page=${i }">${i }</a></li>
 				</c:forEach>
 				<c:if test="${endPage<totalpage }">
-				<li><a href="../main/main.do?page=${endPage+1 }">&raquo;</a></li>
+				<li><a href="../goods/list.do?page=${endPage+1 }">&raquo;</a></li>
 				</c:if>
 			</ul>
 		</div>
 		<div class="row" style="margin-top: 10px;">
-			<h3>최근 방문 맛집</h3>
+			<h3>최근 본 상품</h3>
 			<hr>
 			<c:if test="${size<1 }">
-			<h3>방문 기록이 없습니다</h3>
+			<h3>최근 기록이 없습니다</h3>
 			</c:if>
 			<c:if test="${size>0 }">
 			<c:forEach var="cvo" items="${cList }">
 				<div style="width: 100px;height: 100px;display: inline-block;">
-					<a href="../food/detail_before.do?no=${cvo.no }">
-					<img src="${cvo.poster }" style="width: 100px;height: 100px;margin-left: 3px;">
+					<a href="../goods/detail_before.do?no=${cvo.no }">
+					<img src="${cvo.goods_poster }" style="width: 100px;height: 100px;margin-left: 3px;">
 					</a>
 				</div>
 			</c:forEach>
