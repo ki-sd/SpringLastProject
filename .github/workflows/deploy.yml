@@ -38,4 +38,12 @@ jobs:
         run: |
           echo "=== 생성확인 ==="
           ls -al target
+
+       # 빌드된 war 파일을 톰캣 webapps 폴더로 복사 #
+      - name: Deploy to Tomcat
+        run: |
+          cp target/SpringLastProject.war /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
+          
+          # 톰캣 재시작
+          sudo systemctl restart tomcat9
           
