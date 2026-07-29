@@ -45,5 +45,6 @@ jobs:
           # 톰캣 재시작 #
           /home/sist/apache-tomcat-9.0.120/bin/shutdown.sh || true
           sleep 3
-          /home/sist/apache-tomcat-9.0.120/bin/startup.sh
+          nohup /home/sist/apache-tomcat-9.0.120/bin/startup.sh > /dev/null 2>&1 &
+          sleep 2
           
