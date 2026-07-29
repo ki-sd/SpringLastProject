@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<h1 style="color: red">Hello CI/CD</h1>
+	<h1 style="color: red">Hello CI/CD </h1>
 </html>
