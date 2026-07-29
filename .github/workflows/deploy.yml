@@ -12,7 +12,7 @@ jobs:
     steps:
       # 소스 체크#
       - name: Checkout
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
       # 프로젝트 구조 확인#
       - name: Check Project Structure
         run: |
