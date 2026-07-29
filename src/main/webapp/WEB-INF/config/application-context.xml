@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 
+		
+		 요청 : main/main.do
+		  |
+		 DispatcherServlet
+		  |
+		 =======WebApplicationContext============
+		 HandlerMapping : Model클래스 찾기 (@Controller,@RestController)
+		  |
+		 찾는 클래스의 메서드 호출 : return / model.addAttribute()
+		  |
+		 return을 받는다 : ViewResolver
+		                    |
+		                JSP를 찾아서 model에 등록된 데이터 전송
+		                ========
+		                | model에 등록된 데이터 출력
+		 1) DispatcherServlet
+		 2) WebApplicationContext
+		 3) HandlerMapping
+		 4) ViewResolver
+		 ========================== 라이브러리로 제작
+		    => @Controller / JSP를 만들면 된다
+		       ============ Model
+		                    1) VO 2) DAO 3) Service
+		                    ========================= 조립: Model
+	
+	 -->
+	<context:component-scan base-package="com.sist.*"/>
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/"
+		p:suffix=".jsp"
+	/>
+
+</beans>
