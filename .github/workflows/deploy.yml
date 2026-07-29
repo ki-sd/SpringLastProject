@@ -1,0 +1,41 @@
+name: Spring Deploy
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  deploy: 
+    runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: SpringLastProject
+    steps:
+      # 소스 체크#
+      - name: Checkout
+        uses: actions/checkout@4
+      # 프로젝트 구조 확인#
+      - name: Check Project Structure
+        run: |
+          echo "=== 현재 위치 ==="
+          pwd
+
+          echo "=== 프로젝트 목록 ==="
+          ls -al
+
+      #자바 확인#
+      - name: Java version
+        run: |
+          java -version
+          mvn -version
+
+      # Maven war파일 만들기 #
+      - name: Maven Build
+        run: |
+          mvn clean package -DskipTests
+          
+      # WAR 확인 #
+      - name: Check War
+        run: |
+          echo "=== 생성확인 ==="
+          ls -al target
+          
