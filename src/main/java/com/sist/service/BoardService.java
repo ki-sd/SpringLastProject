@@ -2,7 +2,6 @@ package com.sist.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
 import com.sist.vo.BoardVO;
 
@@ -12,5 +11,6 @@ public interface BoardService {
 	public void boardInsert(BoardVO vo);
 	public BoardVO boardDetailData(int no);
 	public void boardReplyInsert(int no,BoardVO vo);
-	public void boardUpdate(BoardVO vo);
+	public BoardVO boardUpdateDetail(int no);
+	public String boardUpdate(int no,BoardVO vo);
 }

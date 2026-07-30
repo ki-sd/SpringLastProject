@@ -60,6 +60,16 @@ public interface BoardMapper {
 	public void boardDepthIncrement(int no);
 	
 	// 수정
+	@Select("SELECT no,name,subject,content "
+			+ "FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public BoardVO boardUpdateDetail(int no);
+	
+	@Select("SELECT no,pwd "
+			+ "FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public BoardVO boardGetPassword(int no);
+	
 	@Update("UPDATE springReplyBoard "
 			+ "SET name=#{name},subject=#{subject},content=#{content} "
 			+ "WHERE no=#{no}")

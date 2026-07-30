@@ -29,8 +29,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void boardUpdate(BoardVO vo) {
-		mapper.boardUpdate(vo);
+	public BoardVO boardUpdateDetail(int no) {
+		BoardVO vo=mapper.boardUpdateDetail(no);
+		return vo;
+	}
+	
+	@Override
+	public String boardUpdate(int no,BoardVO vo) {
+		BoardVO dbvo=mapper.boardGetPassword(no);
+		String msg="NOPWD";
+		if(dbvo.getPwd().equals(vo.getPwd())) {
+			mapper.boardUpdate(vo);
+			msg="OK";
+		}
+		return msg;
 	}
 
 	@Override

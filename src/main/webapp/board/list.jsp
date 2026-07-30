@@ -19,6 +19,13 @@ a{
 	<div class="container">
 		<div class="row">
 			<h3>묻고 답하기</h3>
+			<table class="table">
+				<tr>
+					<td>
+						<a href="../board/insert.do" class="btn btn-sm btn-warning">등록</a>
+					</td>
+				</tr>
+			</table>
 			<table class="table table-hover">
 				<tr class="success">
 					<th width="10%" class="text-center">번호</th>
@@ -38,7 +45,7 @@ a{
 						</c:forEach>
 						<img src="../board/re_icon.png">
 					</c:if>
-					<a href="../board/detail.do?${vo.no }">
+					<a href="../board/detail.do?no=${vo.no }">
 					${vo.subject }&nbsp;</a>
 						<c:if test="${vo.dbday==today }"><sup><img src="../board/new.gif"></sup></c:if>
 					</td>
@@ -49,6 +56,19 @@ a{
 				<c:set var="count" value="${count-1 }"/>
 				</c:forEach>
 			</table>
+		</div>
+		<div class="row text-center" style="margin-top: 10px">
+			<ul class="pagination">
+				<c:if test="${startPage>1 }">
+				<li><a href="../board/list.do?page=${startPage-1 }">&laquo;</a></li>
+				</c:if>
+				<c:forEach var="i" begin="${startPage }" end="${endPage }">
+				<li ${i==curpage?'class="active"':'' }><a href="../board/list.do?page=${i }">${i }</a></li>
+				</c:forEach>
+				<c:if test="${endPage<totalpage }">
+				<li><a href="../board/list.do?page=${endPage+1 }">&raquo;</a></li>
+				</c:if>
+			</ul>
 		</div>
 	</div>
 </html>
