@@ -11,7 +11,6 @@
 			<param-value>
 				/WEB-INF/config/application-*.xml
 				/WEB-INF/datasource/application-*.xml
-				/WEB-INF/security/application-*.xml
 			</param-value>
 		</init-param>
 	</servlet>
