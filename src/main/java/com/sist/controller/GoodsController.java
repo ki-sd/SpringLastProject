@@ -38,7 +38,7 @@ public class GoodsController {
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage", totalpage);
 		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage); 
+		model.addAttribute("endPage", endPage);
 		
 		List<GoodsVO> cList=new ArrayList<GoodsVO>();
 		Cookie[] cookies=request.getCookies();
