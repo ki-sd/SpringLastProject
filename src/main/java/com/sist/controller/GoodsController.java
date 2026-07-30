@@ -43,7 +43,7 @@ public class GoodsController {
 		List<GoodsVO> cList=new ArrayList<GoodsVO>();
 		Cookie[] cookies=request.getCookies();
 		if(cookies!=null) {
-			for(int i=cookies.length-1;i>cookies.length-10;i--) {
+			for(int i=cookies.length-1;i>=0&&i>cookies.length-10;i--) {
 				if(cookies[i].getName().startsWith("goods_")) {
 					if(cookies[i].getName().equals("goods_null")) {
 						continue;
