@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.sist.vo.FoodVO" alias="FoodVO"/>
 		<typeAlias type="com.sist.vo.GoodsVO" alias="GoodsVO"/>
+		<typeAlias type="com.sist.vo.GoodsVO" alias="BoardVO"/>
 	</typeAliases>
 	<mappers>
 		

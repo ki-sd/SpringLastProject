@@ -40,7 +40,7 @@ h3{
 					<td colspan="4" class="text-right">
 						<a href="../board/reply.do?no=${vo.no }" class="btn btn-xs btn-danger">답변</a>
 						<a href="../board/update.do?no=${vo.no }" class="btn btn-xs btn-info">수정</a>
-						<a href="#" class="btn btn-xs btn-warning">삭제</a>
+						<a href="../board/delete.do?no=${vo.no }" class="btn btn-xs btn-warning">삭제</a>
 						<a href="../board/list.do" class="btn btn-xs btn-success">목록</a>
 					</td>
 				</tr>

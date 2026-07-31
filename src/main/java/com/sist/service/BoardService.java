@@ -13,4 +13,5 @@ public interface BoardService {
 	public void boardReplyInsert(int no,BoardVO vo);
 	public BoardVO boardUpdateDetail(int no);
 	public String boardUpdate(int no,BoardVO vo);
+	public boolean boardDelete(int no,String pwd);
 }

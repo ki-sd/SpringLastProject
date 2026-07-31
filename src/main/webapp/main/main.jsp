@@ -18,15 +18,25 @@ body {
 .container {
     flex: 1;
 }
-.footer{
-	bottom: 0;
-	width: 100%;
-	height: 60px;
-	line-height: 60px;
-	margin-top: 30px;
-	background-color: #f5f5f5;
+.footer {
+    width: 100%;
+    padding: 25px 0;
+    margin-top: 30px;
+    background-color: #f5f5f5;
 }
-
+.footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 10px 0 0 0;
+}
+.footer li {
+    line-height: 1.8;
+}
+.footer h3 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>

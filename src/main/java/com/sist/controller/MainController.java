@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequiredArgsConstructor
 public class MainController {
-	private final FoodService service;
+	private final FoodService fservice;
 	@GetMapping("main/main.do")
 	public String main_main(String page, Model model,HttpServletRequest request) {
 		if(page==null) page="1";
@@ -24,8 +24,8 @@ public class MainController {
 		final int ROWSIZE=12;
 		int start=(ROWSIZE*curpage)-(ROWSIZE-1);
 		int end=(ROWSIZE*curpage);
-		List<FoodVO> list=service.foodListData(start, end);
-		int totalpage=service.foodTotalPage();
+		List<FoodVO> list=fservice.foodListData(start, end);
+		int totalpage=fservice.foodTotalPage();
 		
 		final int BLOCK=10;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
@@ -47,7 +47,7 @@ public class MainController {
 						continue;
 					}
 					String no=cookies[i].getValue();
-					FoodVO vo=service.foodDetailData(Integer.parseInt(no));
+					FoodVO vo=fservice.foodDetailData(Integer.parseInt(no));
 					cList.add(vo);
 				}
 			}
@@ -60,6 +60,10 @@ public class MainController {
 		 *     RedirectAttributes => redirect(이미 있는 화면으로 이동)
 		 * 
 		 */
+		
+		List<FoodVO> fList=fservice.foodHit7Data();
+		model.addAttribute("fList", fList);
+		
 		model.addAttribute("main_jsp", "../main/home.jsp");
 		return "main/main";
 	}

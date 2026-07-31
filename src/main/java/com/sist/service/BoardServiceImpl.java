@@ -36,9 +36,9 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public String boardUpdate(int no,BoardVO vo) {
-		BoardVO dbvo=mapper.boardGetPassword(no);
+		String dbpwd=mapper.boardGetPassword(no);
 		String msg="NOPWD";
-		if(dbvo.getPwd().equals(vo.getPwd())) {
+		if(dbpwd.equals(vo.getPwd())) {
 			mapper.boardUpdate(vo);
 			msg="OK";
 		}
@@ -63,6 +63,25 @@ public class BoardServiceImpl implements BoardService {
 		vo.setDepth(0);
 		mapper.boardReplyInsert(vo);
 		mapper.boardDepthIncrement(pno);
+	}
+
+	@Override
+	@Transactional
+	public boolean boardDelete(int no, String pwd) {
+		boolean bCheck=false;
+		BoardVO vo=mapper.boardInfoData(no);
+		String db_pwd=mapper.boardGetPassword(no);
+		if(db_pwd.equals(pwd)) {
+			bCheck=true;
+			if(vo.getDepth()==0) {
+				mapper.boardDelete(no);
+			}else {
+				String msg="관리자에 의해 삭제된 게시물입니다.";
+				mapper.boardMsgUpdate(msg, no);
+			}
+			mapper.boardDepthDecrement(vo.getRoot());
+		}
+		return bCheck;
 	}
 
 }

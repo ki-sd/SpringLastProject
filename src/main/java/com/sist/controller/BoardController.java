@@ -41,6 +41,7 @@ public class BoardController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("today", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+		model.addAttribute("msg", "관리자에 의해 삭제된 게시물입니다.");
 		model.addAttribute("main_jsp", "../board/list.jsp");
 		return "main/main";
 	}
@@ -93,4 +94,11 @@ public class BoardController {
 			return "main/main";
 		}
 	}
+	@GetMapping("board/delete.do")
+	public String board_delete(int no,Model model) {
+		model.addAttribute("no", no);
+		model.addAttribute("main_jsp", "../board/delete.jsp");
+		return "main/main";
+	}
+	
 }

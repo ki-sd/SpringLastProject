@@ -1,5 +1,6 @@
 package com.sist.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -59,16 +60,16 @@ public interface BoardMapper {
 			+ "WHERE no=#{no}")
 	public void boardDepthIncrement(int no);
 	
-	// 수정
+	// 수정     ===> Transaction
 	@Select("SELECT no,name,subject,content "
 			+ "FROM springReplyBoard "
 			+ "WHERE no=#{no}")
 	public BoardVO boardUpdateDetail(int no);
 	
-	@Select("SELECT no,pwd "
+	@Select("SELECT pwd "
 			+ "FROM springReplyBoard "
 			+ "WHERE no=#{no}")
-	public BoardVO boardGetPassword(int no);
+	public String boardGetPassword(int no);
 	
 	@Update("UPDATE springReplyBoard "
 			+ "SET name=#{name},subject=#{subject},content=#{content} "
@@ -76,5 +77,24 @@ public interface BoardMapper {
 	public void boardUpdate(BoardVO vo);
 	
 	// 삭제     ===> Transaction
+	@Select("SELECT root,depth FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public BoardVO boardInfoData(int no);
 	
+	// 3-1. 결과 ==> 답변이 있는 경우
+	@Update("UPDATE springReplyBoard "
+			+ "SET subject=#{msg},content=#{msg} "
+			+ "WHERE no=#{no}")
+	public void boardMsgUpdate(@Param("msg")String msg,@Param("no")int no);
+	
+	// 3-2. 결과 ==> 답변이 없는 경우
+	@Delete("DELETE FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public void boardDelete(int no);
+	
+	// 4. 상위 게시물 Depth감소
+	@Update("UPDATE springReplyBoard "
+			+ "SET depth=depth-1 "
+			+ "WHERE no=#{no}")
+	public boolean boardDepthDecrement(int no);
 }

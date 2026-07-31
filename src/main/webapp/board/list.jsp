@@ -45,8 +45,13 @@ a{
 						</c:forEach>
 						<img src="../board/re_icon.png">
 					</c:if>
+					<c:if test="${vo.subject!=msg }">
 					<a href="../board/detail.do?no=${vo.no }">
 					${vo.subject }&nbsp;</a>
+					</c:if>
+					<c:if test="${vo.subject==msg }">
+					<span style="color: gray">${vo.subject }&nbsp;</span>
+					</c:if>
 						<c:if test="${vo.dbday==today }"><sup><img src="../board/new.gif"></sup></c:if>
 					</td>
 					<td width="15%" class="text-center">${vo.name }</td>
